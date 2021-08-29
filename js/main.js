@@ -48,14 +48,14 @@ playButton.addEventListener('click', () => {
 
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
-  console.log('My Upload 123');
+  console.log('My Upload 1234');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
   fr = new FileReader();
   fr.fileName = 'sample.webm';
   fr.onload = function(e) {
       blob
       html = '<input type="hidden" name="data" value="' + blob.replace(/^.*,/, '') + '" >';
-      html += '<input type="hidden" name="mimetype" value="' + blob.match(/^.*(?=;)/)[0] + '" >';
+      html += '<input type="hidden" name="mimetype" value="video/webm" >';
       html += '<input type="hidden" name="filename" value="test.webm" >';
       $("#data").empty().append(html);
   }
