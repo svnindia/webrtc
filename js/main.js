@@ -48,8 +48,9 @@ playButton.addEventListener('click', () => {
 
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
-  console.log('My Upload 1234');
+  console.log('My Upload 12345');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+  console.log("blob........ ", blob)
   fr = new FileReader();
   fr.fileName = 'sample.webm';
   fr.onload = function(e) {
