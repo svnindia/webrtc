@@ -29,6 +29,7 @@ recordButton.addEventListener('click', () => {
     recordButton.textContent = 'Start Recording';
     playButton.disabled = false;
     downloadButton.disabled = false;
+    uploadButton.disabled = false;
     codecPreferences.disabled = false;
   }
 });
@@ -43,6 +44,19 @@ playButton.addEventListener('click', () => {
   recordedVideo.controls = true;
   recordedVideo.play();
 });
+
+const uploadButton = document.querySelector('button#upload');
+uploadButton.addEventListener('click', () => {
+  console.log('My Upload');
+  const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+  const url = window.URL.createObjectURL(blob);
+  gapi.savetodrive.render('savetodrive-div', {
+              src: url,
+              filename: 'sample.webm',
+              sitename: 'My Recording'
+            });
+});
+
 
 const downloadButton = document.querySelector('button#download');
 downloadButton.addEventListener('click', () => {
@@ -96,6 +110,8 @@ function startRecording() {
   recordButton.textContent = 'Stop Recording';
   playButton.disabled = true;
   downloadButton.disabled = true;
+  
+  uploadButton.disabled = true;
   codecPreferences.disabled = true;
   mediaRecorder.onstop = (event) => {
     console.log('Recorder stopped: ', event);
