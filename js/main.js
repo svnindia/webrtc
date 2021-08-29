@@ -45,8 +45,26 @@ playButton.addEventListener('click', () => {
   recordedVideo.play();
 });
 
+
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
+  console.log('My Upload 123');
+  const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+  fr = new FileReader();
+  fr.fileName = 'sample.webm';
+  fr.onload = function(e) {
+      blob
+      html = '<input type="hidden" name="data" value="' + blob.replace(/^.*,/, '') + '" >';
+      html += '<input type="hidden" name="mimetype" value="' + blob.match(/^.*(?=;)/)[0] + '" >';
+      html += '<input type="hidden" name="filename" value="test.webm" >';
+      $("#data").empty().append(html);
+  }
+  fr.readAsDataURL(blob);
+});
+
+
+const saveButton = document.querySelector('button#upload');
+saveButton.addEventListener('click', () => {
   console.log('My Upload 1');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
   const url = '//svnindia.github.io/webrtc/test/test.js';
