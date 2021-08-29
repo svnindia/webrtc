@@ -47,12 +47,12 @@ playButton.addEventListener('click', () => {
 
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
-  console.log('My Upload');
+  console.log('My Upload 1');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  const url = window.URL.createObjectURL(blob);
+  const url = '//svnindia.github.io/webrtc/test/test.js';
   gapi.savetodrive.render('savetodrive-div', {
               src: url,
-              filename: 'sample.webm',
+              filename: 'sample.js',
               sitename: 'My Recording'
             });
 });
