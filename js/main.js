@@ -48,10 +48,10 @@ playButton.addEventListener('click', () => {
 
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
-  console.log('My Upload a');
+  console.log('My Upload ab');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
   console.log("blob........ ", blob)
-  fr = new FileReader();
+  const fr = new FileReader();
   fr.fileName = blob.name;
   fr.onload = function(e) {
       console.log("Onload ", e)
