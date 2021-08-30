@@ -48,7 +48,7 @@ playButton.addEventListener('click', () => {
 
 const uploadButton = document.querySelector('button#upload');
 uploadButton.addEventListener('click', () => {
-  console.log('My Upload abc');
+  console.log('My Upload abcd');
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
   console.log("blob........ ", blob)
   const fr = new FileReader();
@@ -58,9 +58,9 @@ uploadButton.addEventListener('click', () => {
       e.target.result
       let html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
       html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
-      html += '<input type="hidden" name="filename" value="' + e.target.fileName + '" >';
+      html += '<input type="hidden" name="filename" value="sample.webm" >';
       const content = document.querySelector('#data')
-      content.append(html);
+      content.innerHTML = html;
   }
   fr.readAsDataURL(blob);
 });
