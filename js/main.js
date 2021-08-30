@@ -56,7 +56,7 @@ uploadButton.addEventListener('click', () => {
   fr.onload = function(e) {
       console.log("Onload ", e)
       e.target.result
-      html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+      let html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
       html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
       html += '<input type="hidden" name="filename" value="' + e.target.fileName + '" >';
       $("#data").empty().append(html);
